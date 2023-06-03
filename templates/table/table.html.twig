@@ -10,13 +10,21 @@
 
 
 <div class="container">
-    {{ form_start(form) }}
-    
-    {{ form_end(form) }}
 
-    {{ form_start(searchForm) }}
-    
-    {{ form_end(searchForm) }}
+    <div class="d-flex">
+        
+        {{ form_start(form, {'attr': {'class': 'col-3 mx-2 mt-4 py-3 px-4 border form'}}) }}
+            {{ form_label(form.sort_by, 'Sort by:', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.sort_by, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.filter, {'attr': {'class': 'mt-3 btn btn-primary'}}) }}
+        {{ form_end(form) }}
+
+        {{ form_start(searchForm, {'attr': {'class': 'col-3 mx-2 mt-4 py-3 px-4 border form'}}) }}
+            {{ form_label(searchForm.find_by, 'Find by:', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(searchForm.find_by, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(searchForm.Search, {'attr': {'class': 'mt-3 btn btn-primary'}}) }}
+        {{ form_end(searchForm) }}
+    </div>
 
     <table class="table">
         <thead>

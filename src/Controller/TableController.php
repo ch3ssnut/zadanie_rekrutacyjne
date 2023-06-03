@@ -56,7 +56,7 @@ class TableController extends AbstractController
         
         // search functionality
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $pattern = $searchForm->get('search')->getData();
+            $pattern = $searchForm->get('find_by')->getData();
             $escapedPattern = preg_quote($pattern, '/');
             $pattern = '~' . preg_quote($pattern) . '~i';
             // dd($escapedPattern);
