@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SearchType;
 use App\Form\SortType;
 use App\Service\Sort;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +23,12 @@ class TableController extends AbstractController
         // create form to sort data
         $form = $this->createForm(SortType::class);
         $form->handleRequest($request);
+
+        // Search form
+        $searchForm = $this->createForm(SearchType::class);
+        $searchForm->handleRequest($request);
         
+        // sort data functionality
         if ($form->isSubmitted() && $form->isValid()) { 
             // sort data with service
             switch ($form->get('sort_by')->getData()) {
@@ -43,13 +49,36 @@ class TableController extends AbstractController
             return $this->render('table/table.html.twig', [
                 'data' => $data,
                 'form' => $form->createView(),
+                'searchForm' => $searchForm->createView(),
             ]);
         }
         
+        
+        // search functionality
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $pattern = $searchForm->get('search')->getData();
+            $escapedPattern = preg_quote($pattern, '/');
+            $pattern = '~' . preg_quote($pattern) . '~i';
+            // dd($escapedPattern);
+            $foundRows = Array();
+            foreach ($data as $dataRow) {
+                
+                if (preg_match($pattern, strval($dataRow['ref'])) || preg_match($pattern, strval($dataRow['symbol']))) {
+                    array_push($foundRows, $dataRow);
+                }
+            }
+            return $this->render('table/table.html.twig', [
+                'data' => $foundRows,
+                'form' => $form->createView(),
+                'searchForm' => $searchForm->createView(),
+            ]);
+        }
+
 
         return $this->render('table/table.html.twig', [
             'data' => $data,
             'form' => $form->createView(),
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 }
