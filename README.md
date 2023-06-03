@@ -15,8 +15,13 @@ Przy projekcie korzystano z:
 * Bootstrap
 
 ## Setup
-W celu uruchomienia aplikacji lokalnie, należy mieć zainstalowany composer oraz symfony cli. Następnie wykonać poniższe komendy konsoli: 
+W celu uruchomienia aplikacji lokalnie, należy mieć zainstalowany git, composer oraz symfony cli. Następnie wykonać poniższe komendy konsoli: 
+```
+git clone https://github.com/ch3ssnut/zadanie_rekrutacyjne
+cd zadanie_rekrutacyjne
+```
 
+Po przejściu sclonowanego folderu:
 ```
 $ composer install
 $ symfony serve -d
@@ -26,6 +31,5 @@ $ symfony serve -d
 Następnie wejść na adres:
 ```
 https://localhost:8000/
-
 ```
 
