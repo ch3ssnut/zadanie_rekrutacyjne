@@ -59,7 +59,6 @@ class TableController extends AbstractController
             $pattern = $searchForm->get('find_by')->getData();
             $escapedPattern = preg_quote($pattern, '/');
             $pattern = '~' . preg_quote($pattern) . '~i';
-            // dd($escapedPattern);
             $foundRows = Array();
             foreach ($data as $dataRow) {
                 
