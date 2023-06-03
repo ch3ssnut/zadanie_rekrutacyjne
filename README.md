@@ -21,7 +21,7 @@ git clone https://github.com/ch3ssnut/zadanie_rekrutacyjne
 cd zadanie_rekrutacyjne
 ```
 
-Po przejściu sclonowanego folderu:
+Po przejściu do sclonowanego folderu:
 ```
 $ composer install
 $ symfony serve -d
