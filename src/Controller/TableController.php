@@ -30,22 +30,10 @@ class TableController extends AbstractController
         
         // sort data functionality
         if ($form->isSubmitted() && $form->isValid()) { 
-            // sort data with service
-            switch ($form->get('sort_by')->getData()) {
-                case 'ref':
-                    $data = $sort->sortTable($data, 'ref');
-                    break;
-                case 'symbol':
-                    $data = $sort->sortTable($data, 'symbol');
-                    break;
-                case 'regdate':
-                    $data = $sort->sortTable($data, 'regdate');
-                    break;
-                case 'send_date':
-                    $data = $sort->sortTable($data, 'send_date');
-                    break;
-            }
-
+            // sort data with sort service
+            $filter = $form->get('sort_by')->getData();
+            $data = $sort->sortTable($data, $filter);
+            
             return $this->render('table/table.html.twig', [
                 'data' => $data,
                 'form' => $form->createView(),
