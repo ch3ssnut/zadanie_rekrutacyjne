@@ -8,8 +8,29 @@
 </style>
 
 <div class="container">
-    {% for row in data %}
-        <div class="">{{row.regdate}}</div>
-    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ref</th>
+                <th scope="col">Client name</th>
+                <th scope="col">Registration date</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Send date</th>
+                <th scope="col">Invoiced</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{row.ref}}</td>
+                    <td>{{row.client_name}}</td>
+                    <td>{{row.regdate}}</td>
+                    <td>{{row.symbol}}</td>
+                    <td>{{row.send_date}}</td>
+                    <td>{{ row.invoiced ? 'Yes' : 'No' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
