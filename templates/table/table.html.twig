@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zadanie rekrutacyjne{% endblock %}
+
+{% block body %}
+<style>
+    
+</style>
+
+<div class="container">
+    {% for row in data %}
+        <div class="">{{row.regdate}}</div>
+    {% endfor %}
+</div>
+{% endblock %}
